@@ -57,7 +57,6 @@ export const createPool = async () => {
       useSOLBalance: true,
     },
     computeBudgetConfig: { 
-      units: 80000,
       microLamports: 400000,
     },
     txVersion,
