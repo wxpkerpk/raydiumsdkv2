@@ -1,9 +1,17 @@
 import { CREATE_CPMM_POOL_PROGRAM, CREATE_CPMM_POOL_FEE_ACC } from '@raydium-io/raydium-sdk-v2'
 import BN from 'bn.js'
 import { initSdk, txVersion } from '../config'
-
+// 使用 ES6 模块语法导入整个库
+import axios from 'axios';
+const HttpsProxyAgent = require('https-proxy-agent');
 export const createPool = async () => {
   console.log(1111)
+
+  // axios.defaults.httpsAgent = new HttpsProxyAgent({
+  //   host: '127.0.0.1', // 例如 '127.0.0.1'
+  //   port: '7890', // 例如 8080
+  //   protocol: 'https' // 根据您的代理服务器要求设置
+  // });
 
   const raydium = await initSdk({ loadToken: true })
 
@@ -33,6 +41,7 @@ export const createPool = async () => {
    */
 
     console.log(1111111111111)
+  
   const { execute, extInfo } = await raydium.cpmm.createPool({
     programId: CREATE_CPMM_POOL_PROGRAM,
     poolFeeAccount: CREATE_CPMM_POOL_FEE_ACC,
@@ -44,6 +53,9 @@ export const createPool = async () => {
     associatedOnly: false,
     ownerInfo: {
       useSOLBalance: true,
+    },
+    computeBudgetConfig:{
+      microLamports:300
     },
     txVersion,
   })
