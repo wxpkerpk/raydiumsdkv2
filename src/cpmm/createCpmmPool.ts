@@ -1,11 +1,13 @@
-import { CREATE_CPMM_POOL_PROGRAM, CREATE_CPMM_POOL_FEE_ACC } from '@raydium-io/raydium-sdk-v2'
+import { CREATE_CPMM_POOL_PROGRAM, CREATE_CPMM_POOL_FEE_ACC ,getTransferAmountFeeV2, DEVNET_PROGRAM_ID} from '@raydium-io/raydium-sdk-v2'
 import BN from 'bn.js'
 import { initSdk, txVersion } from '../config'
 // 使用 ES6 模块语法导入整个库
+
 import axios from 'axios';
 const HttpsProxyAgent = require('https-proxy-agent');
 export const createPool = async () => {
   console.log(1111)
+
 
   // axios.defaults.httpsAgent = new HttpsProxyAgent({
   //   host: '127.0.0.1', // 例如 '127.0.0.1'
@@ -13,20 +15,20 @@ export const createPool = async () => {
   //   protocol: 'https' // 根据您的代理服务器要求设置
   // });
 
-  const raydium = await initSdk({ loadToken: true })
+  const raydium = await initSdk({ loadToken: false })
 
   // check token list here: https://api-v3.raydium.io/mint/list
   console.log(2222)
 
   // RAY
   const mintA = {
-    address: '5F9jnKnuCWyAz6ZwEqBEYu4PMAw2C7TEpBLW36iM2KTG',
+    address: 'Nu1DYvumq5dPZALdtxXLYM8LvKSihXPF6tCgQ71ugiv',
     programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
     decimals: 6,
   } 
   // USDC
   const mintB ={
-    address: '3B1VYG3vy2JcBGSU7ftVrHevKEWHPqniurx9q6DBvico',
+    address: 'NGnJFJE3pzvCVNed73dpL5euMar6vaCTxjEMSy2pump',
     programId: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
     decimals: 6,
   } 
@@ -54,8 +56,9 @@ export const createPool = async () => {
     ownerInfo: {
       useSOLBalance: true,
     },
-    computeBudgetConfig:{
-      microLamports:100000000000
+    computeBudgetConfig: { 
+      units: 8000,
+      microLamports: 200000,
     },
     txVersion,
   })
