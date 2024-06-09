@@ -4,7 +4,7 @@ import { TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token'
 import bs58 from 'bs58'
 
 export const owner: Keypair = Keypair.fromSecretKey(Uint8Array.from([126,28,93,76,198,3,28,247,107,163,80,255,37,183,9,236,44,112,72,196,25,41,65,231,9,74,190,98,25,0,37,0,128,30,221,92,7,13,161,113,116,123,76,184,245,121,110,109,92,54,213,62,37,170,174,8,28,229,11,77,192,4,39,221]));
-export const connection = new Connection('https://api.devnet.solana.com') //<YOUR_RPC_URL>
+export const connection = new Connection('https://virulent-hidden-shadow.solana-devnet.quiknode.pro/a635a570d513b36c178917ac626183df0958346b') //<YOUR_RPC_URL>
 export const txVersion = TxVersion.V0 // or TxVersion.LEGACY
 let raydium: Raydium | undefined
 export const initSdk = async (params?: { loadToken?: boolean }) => {
