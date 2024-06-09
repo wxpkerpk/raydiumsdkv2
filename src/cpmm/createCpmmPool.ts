@@ -58,7 +58,7 @@ export const createPool = async () => {
     },
     computeBudgetConfig: { 
       microLamports: 600000,
-      units:20000
+      units:9000
     },
     txVersion,
   })
